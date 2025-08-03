@@ -1,0 +1,24 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+.left{
+  width: 20vw;
+  border: 2px solid black;
+  margin: 3px;
+
+}
+
+.right{
+  width: 80vw;
+  border: 2px solid black;
+  margin: 3px;
+}
+
+.container{
+  display: flex;
+  
+}
