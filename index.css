@@ -1,70 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,700&display=swap');
-
-
-
-
-*{
+* {
   margin: 0px;
   padding: 0px;
-  font-family: "Roboto"
-  
- 
- 
+  font-family: "Roboto";
 }
 
+.body {
+  background-color: black;
+  color: white;
+}
 
-
-
-.left{
+.left {
   width: 20vw;
   border: 2px solid black;
   margin: 3px;
   padding: 10px;
-
 }
 
-.right{
+.right {
   width: 80vw;
-  border: 2px solid black;
+  /* border: 2px solid red; */
   margin: 3px;
+  padding: 10px;
 }
 
-.container{
+.container {
   display: flex;
-  
 }
 
-.search img{
+.search img {
   height: 35px;
   width: 28px;
 }
 
-.home-icon img{
+.home-icon img {
   width: 25px;
   padding-top: 20px;
-  
 }
 
-
-
-.search img{
+.search img {
   width: 25px;
 }
 
-.logo img{
+.logo img {
   width: 25px;
 }
 
-.home{
+.home {
   padding: 20px;
   border-radius: 10px;
 }
 
-
-.library{
-  margin: 10px;
+.library {
+  margin-top: 10px;
   border-radius: 10px;
-  ;
+  min-height: 80vh;
+  padding: 10px;
+  position: relative;
 }
 
+.library-footer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #302e2e;
+  padding: 20px;
+  margin-left: -15px;
+  gap: 20px;
+  border-radius: 10px;
+  margin-top: 2px;
+}
+
+.spotify-playlist {
+  padding: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.cards {
+  width: 200px;
+  /* border: 2px solid red; */
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 5px;
+  margin: 5px;
+  position: relative;
+}
+
+.cards > * {
+  padding: 5px;
+}
+
+.cards img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.play {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  top: 145px;
+  right: 15px;
+  width: 55px;
+}
+
+
+/* Scroll bar code  */
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;     /* Scrollbar thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;     /* On hover */
+}
+
+
+
+.sign-up-button {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sign-up-button:hover {
+  text-decoration: underline;
+}
+
+
+.login-button{
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: ease-in-out 1s, color 0.2s;
+}
+
+.login-button:hover {
+  background: #f0f0f0
+}
+
+.buttons > *{
+  margin: 0px 10px;
+}
