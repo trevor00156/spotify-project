@@ -6,6 +6,14 @@
   font-family: "Roboto";
 }
 
+/* Prevent horizontal overflow */
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .body {
   background-color: black;
   color: white;
@@ -23,6 +31,7 @@
   /* border: 2px solid red; */
   margin: 3px;
   padding: 10px;
+  position: relative;
 }
 
 .container {
@@ -111,7 +120,6 @@
 }
 
 .play {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,7 +133,6 @@
   width: 55px;
 }
 
-
 /* Scroll bar code  */
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
@@ -138,15 +145,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;     /* Scrollbar thumb color */
+  background: #333; /* Scrollbar thumb color */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;     /* On hover */
+  background: #555; /* On hover */
 }
-
-
 
 .sign-up-button {
   background: transparent;
@@ -160,8 +165,7 @@
   text-decoration: underline;
 }
 
-
-.login-button{
+.login-button {
   background: #ffffff;
   color: #000000;
   border: none;
@@ -174,9 +178,27 @@
 }
 
 .login-button:hover {
-  background: #f0f0f0
+  background: #f0f0f0;
 }
 
-.buttons > *{
+.buttons > * {
   margin: 0px 10px;
 }
+
+.playbar {
+  background-color: green;
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+
+  margin-left: -15px;
+}
+
+
+
