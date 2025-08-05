@@ -9,3 +9,24 @@
 .align_items{
   align-items: center;
 }
+
+.bg_black{
+
+  background-color: black;
+  color: white;
+
+}
+
+.invert{
+  filter: invert(1);
+}
+
+.bg-grey{
+  background-color: #121212;
+}
+
+.padding{
+  padding: 2px;
+  
+}
+

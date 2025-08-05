@@ -1,7 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,700&display=swap');
+
+
+
+
 *{
   margin: 0px;
   padding: 0px;
+  font-family: "Roboto"
+  
+ 
+ 
 }
+
 
 
 
@@ -9,6 +20,7 @@
   width: 20vw;
   border: 2px solid black;
   margin: 3px;
+  padding: 10px;
 
 }
 
@@ -22,3 +34,37 @@
   display: flex;
   
 }
+
+.search img{
+  height: 35px;
+  width: 28px;
+}
+
+.home-icon img{
+  width: 25px;
+  padding-top: 20px;
+  
+}
+
+
+
+.search img{
+  width: 25px;
+}
+
+.logo img{
+  width: 25px;
+}
+
+.home{
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.library{
+  margin: 10px;
+  border-radius: 10px;
+  ;
+}
+
