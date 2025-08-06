@@ -183,22 +183,20 @@ body {
 
 .buttons > * {
   margin: 0px 10px;
+  
 }
 
 .playbar {
-  background-color: green;
+  background-color: white;
   bottom: 0px;
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: 90%;
 
   padding: 20px;
   margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
-
+  
   margin-left: -15px;
 }
-
-
-
