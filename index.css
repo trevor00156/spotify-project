@@ -187,7 +187,7 @@ body {
 }
 
 .playbar {
-  background-color: white;
+  background-color: #e3dddd;
   bottom: 0px;
   position: fixed;
   width: 90%;
@@ -200,3 +200,28 @@ body {
   
   margin-left: -15px;
 }
+
+ul li{
+  list-style: decimal;
+}
+
+.song-list {
+  max-width: 250px;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.song-list ul {
+  list-style: decimal;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.song-list li {
+  margin-bottom: 10px;
+  word-break: break-all; /* force line break for long words like URLs */
+}
+

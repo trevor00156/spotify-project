@@ -4,6 +4,9 @@ async function getsongs() {
   let a = await fetch("http://127.0.0.1:5500/songs/");
   let response = await a.text();
 
+ 
+
+
   let div = document.createElement("div");
   div.innerHTML = response;
 
@@ -16,16 +19,31 @@ async function getsongs() {
     const element = as[index];
 
     if (element.href.endsWith(".mp3")) {
-      songs.push(element.href);
+      songs.push(element.href.split('/song')[1]);
     }
-  }
+  } 
+
+  console.log(songs);
+  
 
   return songs;
 }
 
 async function main() {
-  let song = await getsongs();
-  console.log(song);
+  let songs = await getsongs();
+  console.log(songs);
+
+  
+
+
+  let songList = document.querySelector(".song-list ul");
+
+  for (const song of songs) {
+    songList.innerHTML= songList.innerHTML+ `<li>${song.replaceAll('%20',' ')}</li>`
+    
+  }
+  let audio = new Audio(songs[0]);
+  audio.play();
 }
 
 main();
