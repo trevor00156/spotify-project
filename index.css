@@ -3,6 +3,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  
   font-family: "Roboto";
 }
 
@@ -10,8 +11,9 @@
 html,
 body {
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  
+  
+  
 }
 
 .body {
@@ -31,11 +33,14 @@ body {
   /* border: 2px solid red; */
   margin: 3px;
   padding: 10px;
-  position: relative;
+ 
+  
 }
 
 .container {
   display: flex;
+ position: relative;
+  width: 100%;
 }
 
 .search img {
@@ -67,7 +72,6 @@ body {
   min-height: 80vh;
   padding: 10px;
   position: relative;
-  
 }
 
 .library-footer {
@@ -188,18 +192,21 @@ body {
 }
 
 .playbar {
-  background-color: #ffffff;
+  background-color: #121212;
   bottom: 0px;
   position: fixed;
-  width: 90%;
-
+  width: 76%;
+  height: 18px;
   padding: 20px;
   margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
+  border-radius: 30px;
+  
 
   margin-left: -15px;
+}
+
+.playbar >*{
+  gap: 15px;
 }
 
 ul li {
@@ -215,7 +222,6 @@ ul li {
   font-size: 14px;
   margin-bottom: 80px;
   margin-top: 20px;
-  
 }
 
 .song-list ul {
@@ -240,8 +246,49 @@ a {
   text-decoration: none;
 }
 
-ul li > *{
-
+ul li > * {
   padding: 5px;
-  
 }
+
+.play-button {
+  cursor: pointer;
+}
+
+.seekbar {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+ 
+ margin-top: 7px;
+ border-radius: 10px;
+ position: fixed;
+}
+
+.song-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+
+}
+
+.song-buttons img{
+  cursor: pointer;
+}
+
+.circle{
+  background-color: blue;
+  height: 15px;
+  
+  width: 15px;
+  border-radius: 100px;
+  position: absolute;
+  top: -5px;
+  transition: 0.5s;
+}
+
+
+.songinfo{
+ margin-top: -30px;
+}
+
+

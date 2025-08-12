@@ -13,6 +13,7 @@
         <div class="home bg-grey">
           <div class="logo invert padding">
             <img src="logo.svg" alt="logo" />
+            <!-- <span class="invert " >SPOTIFY</span> -->
           </div>
 
           <div class="home-icon invert padding">
@@ -24,13 +25,11 @@
         </div>
 
         <div class="library bg-grey margin">
-          <img class="invert" src="library.svg" alt="library">
-            <h3>YOUR LIBRARY</h3>
+          <img class="invert" src="library.svg" alt="library" />
+          <h3>YOUR LIBRARY</h3>
 
           <div class="song-list">
-            <ul>
-              
-            </ul>
+            <ul></ul>
           </div>
 
           <footer>
@@ -218,10 +217,17 @@
         </div>
 
         <div class="playbar">
-          <div class="song-buttons ">
-            <img src="previous.svg" alt="" />
-            <img src="play button.svg" alt="" />
-            <img src="next song.svg" alt="" />
+          <div class="song-buttons invert">
+            <img id="previous" src="previous.svg" alt="" />
+            <img id="play" src="play button.svg" alt="" />
+            <img id="next" src="next song.svg" alt="" />
+          </div>
+
+          <div class="songinfo"></div>
+          <div class="songDuration"></div>
+
+          <div class="seekbar invert">
+            <div class="circle"></div>
           </div>
         </div>
       </div>
