@@ -257,8 +257,8 @@ ul li > * {
 .seekbar {
   background-color: black;
   height: 5px;
-  width: 100%;
- 
+  width: 75%;
+ cursor: pointer;
  margin-top: 7px;
  border-radius: 10px;
  position: fixed;
