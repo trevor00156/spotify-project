@@ -81,9 +81,8 @@ async function main() {
 
         if (currentsong) {
           currentsong.pause();
-
+          playButton.src = "pause.svg";
           currentsong.currentTime = 0;
-          playButton.src = "play button.svg";
         }
 
         // It play new song
@@ -177,7 +176,7 @@ async function main() {
 
     currentsong.play();
 
-    // update the name and duration of song with the next song
+    // update the name and duration of song with the previous song
     currentsong.addEventListener("timeupdate", () => {
       let rawFileName = currentsongUrl.split("/").pop();
       let songName = decodeURIComponent(rawFileName).replace(".mp3", "");
@@ -186,10 +185,22 @@ async function main() {
       document.querySelector(".songDuration").innerHTML = `${formatTime(
         currentsong.currentTime
       )}/${formatTime(currentsong.duration)}`;
+      document.querySelector(".circle").style.left = 0;
       document.querySelector(".circle").style.left =
         (currentsong.currentTime / currentsong.duration) * 100 + "%";
     });
   });
+
+  //Add an event listener to volume button
+
+  document
+    .querySelector(".range")
+    .getElementsByTagName("input")[0]
+    .addEventListener("change", (e) => {
+      if (currentsong) {
+        currentsong.volume = e.target.value / 100;
+      }
+    });
 }
 
 main();

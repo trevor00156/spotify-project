@@ -114,6 +114,13 @@ body {
   border-radius: 5px;
   margin: 5px;
   position: relative;
+  cursor: pointer;
+  
+}
+
+.cards:hover{
+  background-color: #252323;
+  transition: 0.5s all;
 }
 
 .cards > * {
@@ -196,7 +203,7 @@ body {
   bottom: 0px;
   position: fixed;
   width: 76%;
-  height: 18px;
+  height: 40px;
   padding: 20px;
   margin-bottom: 10px;
   border-radius: 30px;
@@ -262,12 +269,13 @@ ul li > * {
  margin-top: 7px;
  border-radius: 10px;
  position: fixed;
+ bottom: 15px;
 }
 
 .song-buttons {
   display: flex;
   justify-content: center;
-  margin-top: -5px;
+  margin-top: -20px;
 
 }
 
@@ -291,4 +299,20 @@ ul li > * {
  margin-top: -30px;
 }
 
+.volume{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 70px;
+  gap: 8px;
+  
+}
 
+.volume img{
+  /* margin-right:10px; */
+}
+
+.range input{
+  cursor: pointer;
+  height: 9px;
+}
