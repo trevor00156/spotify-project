@@ -9,9 +9,12 @@ function formatTime(seconds) {
 
 let songs;
 
+let currentFolder;
+
 // getsong function fetch the songs folder and return songs
-async function getsongs() {
-  let a = await fetch("http://127.0.0.1:5500/songs/");
+async function getsongs(folder) {
+  currentFolder = folder;
+  let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
   let response = await a.text();
 
   let div = document.createElement("div");
@@ -19,6 +22,7 @@ async function getsongs() {
 
   let as = div.getElementsByTagName("a");
 
+  // List of songs in that folder
   let songs = [];
   // console.log(as);
 
@@ -38,7 +42,7 @@ async function getsongs() {
 
 async function main() {
   let songList = document.querySelector(".song-list ul");
-  songs = await getsongs(); // assuming this returns an array of song URLs
+  songs = await getsongs("songs/album2"); // assuming this returns an array of song URLs
 
   songs.forEach((songUrl) => {
     // Extract filename from URL
