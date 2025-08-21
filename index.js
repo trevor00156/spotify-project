@@ -40,12 +40,82 @@ async function getsongs(folder) {
   return songs;
 }
 
+async function displayAlbum() {
+  let a = await fetch(`http://127.0.0.1:5500/songs/`);
+  let response = await a.text();
+
+  let div = document.createElement("div");
+  div.innerHTML = response;
+  let Anchors = div.getElementsByTagName("a");
+  let array = Array.from(Anchors);
+
+  for (let index = 0; index < array.length; index++) {
+    const a = array[index];
+
+    if (a.href.includes("songs/")) {
+      let folder = a.href.split("/").splice(-2)[1];
+      // get the metaData of the Folder
+
+      let fetchJson = await fetch(
+        `http://127.0.0.1:5500/songs/${folder}/info.json`
+      );
+      let response = await fetchJson.json();
+
+      // console.log(response);
+
+      let cardContainer = document.querySelector(".card-container");
+
+      cardContainer.innerHTML =
+        cardContainer.innerHTML +
+        `   
+      
+      
+       <div data-folder="${folder}" class="cards">
+            <div class="play">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <!-- Outer Circle with Green Background -->
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="15"
+                  fill="#1ED760"
+                  stroke="#000000"
+                  stroke-width="2"
+                />
+
+                <!-- Centered Black Play Icon -->
+                <polygon points="13,10 13,22 22,16" fill="#000000" />
+              </svg>
+            </div>
+            <img
+              src="/songs/${folder}/cover.jpg"
+              alt="image"
+            />
+            <h2>${response.title}</h2>
+            <p>${response.description}</p>
+
+            
+          </div>
+
+
+      
+      `;
+
+      console.log(folder);
+    }
+  }
+  console.log(Anchors);
+}
+
 async function main() {
   let songList = document.querySelector(".song-list ul"); // assuming this returns an array of song URLs
 
   songs = [];
 
-  
+  //Display all albums on the page
+
+  await displayAlbum();
+
   //Add an event listener to card and load the folder on basis of album clicked
 
   Array.from(document.querySelectorAll(".cards")).forEach((card) => {
@@ -54,7 +124,7 @@ async function main() {
       let folder = card.dataset.folder;
 
       songs = await getsongs(`songs/${folder}`);
-      songList.innerHTML="";
+      songList.innerHTML = "";
 
       songs.forEach((songUrl) => {
         // Extract filename from URL
