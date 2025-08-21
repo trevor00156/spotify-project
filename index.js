@@ -23,7 +23,7 @@ async function getsongs(folder) {
   let as = div.getElementsByTagName("a");
 
   // List of songs in that folder
-  let songs = [];
+  songs = [];
   // console.log(as);
 
   for (let index = 0; index < as.length; index++) {
@@ -41,23 +41,35 @@ async function getsongs(folder) {
 }
 
 async function main() {
-  let songList = document.querySelector(".song-list ul");
-  songs = await getsongs("songs/album2"); // assuming this returns an array of song URLs
+  let songList = document.querySelector(".song-list ul"); // assuming this returns an array of song URLs
 
-  songs.forEach((songUrl) => {
-    // Extract filename from URL
-    let rawFileName = songUrl.split("/").pop(); // gets "Avaan%20Jaavan%20Song%20.mp3"
+  songs = [];
 
-    // Decode URL encoding (e.g. %20 -> space, %2C -> comma)
-    let decodedName = decodeURIComponent(rawFileName);
+  
+  //Add an event listener to card and load the folder on basis of album clicked
 
-    // Remove prefix and suffix (like "s/" and ".mp3")
-    decodedName = decodedName.replace("s/", "").replace(".mp3", "");
+  Array.from(document.querySelectorAll(".cards")).forEach((card) => {
+    card.addEventListener("click", async () => {
+      console.log("card is clicked", card.dataset.folder);
+      let folder = card.dataset.folder;
 
-    // Create <li> and <a>
-    let li = document.createElement("li");
+      songs = await getsongs(`songs/${folder}`);
+      songList.innerHTML="";
 
-    li.innerHTML = `
+      songs.forEach((songUrl) => {
+        // Extract filename from URL
+        let rawFileName = songUrl.split("/").pop(); // gets "Avaan%20Jaavan%20Song%20.mp3"
+
+        // Decode URL encoding (e.g. %20 -> space, %2C -> comma)
+        let decodedName = decodeURIComponent(rawFileName);
+
+        // Remove prefix and suffix (like "s/" and ".mp3")
+        decodedName = decodedName.replace("s/", "").replace(".mp3", "");
+
+        // Create <li> and <a>
+        let li = document.createElement("li");
+
+        li.innerHTML = `
                 <img class="invert" src="music.svg" alt="" />
 
                 <div class="song-info">
@@ -68,60 +80,62 @@ async function main() {
                 <img class="invert play-button " src="play button.svg" alt="" />
               `;
 
-    let playButton = li.querySelector(".play-button");
+        let playButton = li.querySelector(".play-button");
 
-    //when we click on play button it play the song
-    playButton.addEventListener("click", () => {
-      if (currentsong && currentsongUrl === songUrl) {
-        if (!currentsong.paused) {
-          currentsong.pause();
-          playButton.src = "play button.svg";
-        } else {
-          currentsong.play();
-          playButton.src = "pause.svg";
-        }
-      } else {
-        // pause previous song if current song plays
+        //when we click on play button it play the song
+        playButton.addEventListener("click", () => {
+          if (currentsong && currentsongUrl === songUrl) {
+            if (!currentsong.paused) {
+              currentsong.pause();
+              playButton.src = "play button.svg";
+            } else {
+              currentsong.play();
+              playButton.src = "pause.svg";
+            }
+          } else {
+            // pause previous song if current song plays
 
-        if (currentsong) {
-          currentsong.pause();
-          playButton.src = "pause.svg";
-          currentsong.currentTime = 0;
-        }
+            if (currentsong) {
+              currentsong.pause();
+              playButton.src = "pause.svg";
+              currentsong.currentTime = 0;
+            }
 
-        // It play new song
-        currentsong = new Audio(songUrl);
-        currentsongUrl = songUrl;
-        currentsong.play();
-        playButton.src = "pause.svg";
+            // It play new song
+            currentsong = new Audio(songUrl);
+            currentsongUrl = songUrl;
+            currentsong.play();
+            playButton.src = "pause.svg";
 
-        // listen for timeUpdate event
+            // listen for timeUpdate event
 
-        currentsong.addEventListener("timeupdate", () => {
-          document.querySelector(".songDuration").innerHTML = `${formatTime(
-            currentsong.currentTime
-          )}/${formatTime(currentsong.duration)}`;
-          document.querySelector(".songinfo").innerHTML = `${decodedName}`;
+            currentsong.addEventListener("timeupdate", () => {
+              document.querySelector(".songDuration").innerHTML = `${formatTime(
+                currentsong.currentTime
+              )}/${formatTime(currentsong.duration)}`;
+              document.querySelector(".songinfo").innerHTML = `${decodedName}`;
 
-          document.querySelector(".circle").style.left =
-            (currentsong.currentTime / currentsong.duration) * 100 + "%";
+              document.querySelector(".circle").style.left =
+                (currentsong.currentTime / currentsong.duration) * 100 + "%";
+            });
+          }
         });
-      }
+
+        //attach an event listener to play , pause and previous
+
+        play.addEventListener("click", () => {
+          if (currentsong.paused) {
+            currentsong.play();
+            play.src = "pause.svg";
+          } else {
+            currentsong.pause();
+            play.src = "play button.svg";
+          }
+        });
+
+        songList.appendChild(li);
+      });
     });
-
-    //attach an event listener to play , pause and previous
-
-    play.addEventListener("click", () => {
-      if (currentsong.paused) {
-        currentsong.play();
-        play.src = "pause.svg";
-      } else {
-        currentsong.pause();
-        play.src = "play button.svg";
-      }
-    });
-
-    songList.appendChild(li);
   });
 
   //Add an event listener to seekbar
