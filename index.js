@@ -289,6 +289,19 @@ async function main() {
         currentsong.volume = e.target.value / 100;
       }
     });
+
+  // Add an event listener on volume button to mute the volume
+
+  document.querySelector(".volume>img").addEventListener("click", (e) => {
+    console.log(e.target);
+    if (e.target.src.includes("volume.svg")) {
+      e.target.src = e.target.src.replace("volume.svg", "mute.svg");
+      currentsong.volume = 0;
+    } else {
+      e.target.src = e.target.src.replace("mute.svg", "volume.svg");
+      currentsong.volume = 0.1;
+    }
+  });
 }
 
 main();
